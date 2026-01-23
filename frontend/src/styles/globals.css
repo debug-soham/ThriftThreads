@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ThriftThreads Design System - Premium Sustainable Fashion */
+
+@layer base {
+  :root {
+    /* Core brand colors - warm neutrals with eco accent */
+    --background: 40 20% 98%;
+    --foreground: 20 10% 8%;
+
+    --card: 40 15% 96%;
+    --card-foreground: 20 10% 8%;
+
+    --popover: 40 20% 98%;
+    --popover-foreground: 20 10% 8%;
+
+    /* Primary - Deep charcoal for premium feel */
+    --primary: 20 10% 8%;
+    --primary-foreground: 40 20% 98%;
+
+    /* Secondary - Warm cream */
+    --secondary: 40 25% 92%;
+    --secondary-foreground: 20 10% 15%;
+
+    /* Muted - Soft warm gray */
+    --muted: 40 10% 90%;
+    --muted-foreground: 20 8% 45%;
+
+    /* Accent - Sage green for sustainability */
+    --accent: 145 25% 35%;
+    --accent-foreground: 40 20% 98%;
+
+    /* Eco green highlight */
+    --eco: 145 40% 40%;
+    --eco-foreground: 40 20% 98%;
+
+    /* Sale/Alert red */
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 40 20% 98%;
+
+    /* UI elements */
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
+    --ring: 20 10% 8%;
+
+    --radius: 0.375rem;
+
+    /* Typography */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    /* Shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(20 10% 8% / 0.08);
+    --shadow-medium: 0 4px 16px -4px hsl(20 10% 8% / 0.12);
+    --shadow-lifted: 0 12px 40px -12px hsl(20 10% 8% / 0.2);
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar */
+    --sidebar-background: 40 15% 96%;
+    --sidebar-foreground: 20 10% 15%;
+    --sidebar-primary: 20 10% 8%;
+    --sidebar-primary-foreground: 40 20% 98%;
+    --sidebar-accent: 145 25% 35%;
+    --sidebar-accent-foreground: 40 20% 98%;
+    --sidebar-border: 35 15% 88%;
+    --sidebar-ring: 20 10% 8%;
+  }
+
+  .dark {
+    --background: 20 15% 6%;
+    --foreground: 40 20% 95%;
+
+    --card: 20 12% 10%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 20 12% 10%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 40 20% 95%;
+    --primary-foreground: 20 15% 6%;
+
+    --secondary: 20 10% 15%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 20 10% 18%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 145 30% 45%;
+    --accent-foreground: 20 15% 6%;
+
+    --eco: 145 40% 50%;
+    --eco-foreground: 20 15% 6%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 20% 95%;
+
+    --border: 20 10% 18%;
+    --input: 20 10% 18%;
+    --ring: 40 20% 90%;
+
+    --sidebar-background: 20 12% 8%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 145 30% 45%;
+    --sidebar-primary-foreground: 20 15% 6%;
+    --sidebar-accent: 20 10% 15%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 20 10% 15%;
+    --sidebar-ring: 145 30% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Hero button variant */
+  .btn-hero {
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-wide uppercase;
+    @apply bg-primary text-primary-foreground border-2 border-primary;
+    @apply hover:bg-transparent hover:text-primary;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .btn-hero-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-wide uppercase;
+    @apply bg-transparent text-primary border-2 border-primary;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Product card styles */
+  .product-card {
+    @apply relative overflow-hidden rounded-sm bg-card;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .product-card:hover {
+    box-shadow: var(--shadow-lifted);
+    transform: translateY(-2px);
+  }
+
+  .product-image-wrapper {
+    @apply relative aspect-square overflow-hidden bg-secondary;
+  }
+
+  .product-image {
+    @apply h-full w-full object-cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .product-card:hover .product-image {
+    transform: scale(1.05);
+  }
+
+  /* Category card styles */
+  .category-card {
+    @apply relative aspect-[3/4] overflow-hidden rounded-sm;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .category-card::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent;
+  }
+
+  /* Condition badges */
+  .badge-condition {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full;
+  }
+
+  .badge-excellent {
+    @apply bg-eco/15 text-eco;
+  }
+
+  .badge-good {
+    @apply bg-accent/15 text-accent;
+  }
+
+  .badge-fair {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  /* Sale banner animation */
+  .sale-marquee {
+    @apply flex overflow-hidden whitespace-nowrap;
+  }
+
+  .sale-marquee-content {
+    @apply flex animate-marquee;
+  }
+
+  /* Brand marquee */
+  .brand-marquee {
+    @apply flex overflow-hidden;
+  }
+
+  .brand-marquee-content {
+    @apply flex animate-marquee-slow items-center gap-16;
+  }
+
+  /* Grid patterns */
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+
+  /* Input focus styles */
+  .input-thrift {
+    @apply w-full px-4 py-3 bg-secondary border border-border rounded-sm;
+    @apply placeholder:text-muted-foreground/60;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary;
+    transition: all var(--transition-fast);
+  }
+
+  /* Filter tag */
+  .filter-tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-sm;
+    @apply bg-secondary text-secondary-foreground border border-border rounded-full;
+    @apply hover:bg-muted cursor-pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .filter-tag-active {
+    @apply bg-primary text-primary-foreground border-primary;
+  }
+
+  /* Price display */
+  .price-current {
+    @apply text-lg font-semibold text-foreground;
+    font-family: var(--font-display);
+  }
+
+  .price-original {
+    @apply text-sm text-muted-foreground line-through;
+  }
+
+  /* Trust badge */
+  .trust-badge {
+    @apply flex items-center gap-3 p-4 bg-card rounded-sm border border-border;
+  }
+}
+
+@layer utilities {
+  /* Text utilities */
+  .text-display {
+    font-family: var(--font-display);
+  }
+
+  .text-body {
+    font-family: var(--font-body);
+  }
+
+  /* Gradient text */
+  .text-gradient-eco {
+    @apply bg-gradient-to-r from-accent to-eco bg-clip-text text-transparent;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Container widths */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Aspect ratios for products */
+  .aspect-product {
+    aspect-ratio: 3/4;
+  }
+
+  .aspect-category {
+    aspect-ratio: 4/5;
+  }
+}
+
+/* Custom animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-slow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee-slow 40s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 50ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 150ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 250ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 350ms; }
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Removed legacy Vite demo styles that constrained layout */
